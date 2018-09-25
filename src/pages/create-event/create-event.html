@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>createEvent</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+  <ion-item>
+    <ion-label floating>name</ion-label>
+    <ion-input type="text" [(ngModel)]="eventDetail.eventName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>description</ion-label>
+    <ion-input type="text" [(ngModel)]="eventDetail.eventDesc"></ion-input>
+  </ion-item>
+
+  <ion-label floating>location</ion-label>
+  <ion-item>
+    <ion-label>latitude</ion-label>
+    <ion-input type="number" [(ngModel)]="eventDetail.lat"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>longitude</ion-label>
+    <ion-input type="number" [(ngModel)]="eventDetail.lgt"></ion-input>
+  </ion-item>
+
+  <button ion-button block (click)="addEvent(eventDetail)">Post</button>
+
+
+</ion-content>
