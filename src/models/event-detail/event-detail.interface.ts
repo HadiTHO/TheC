@@ -1,9 +1,13 @@
 export interface EventDetail {
-    $key?: String,
+    $key?: string,
     eventName: string;
-    eventDesc: String;
-    lat: number;
-    lgt: number;
-    eID: String;
+    eventDesc: string;
+    address: string;
+    startDate: string;
+    endDate: string;
+    startTime: string;
+    endTime: string;
+    noV: number;
+    join?: number;
 
 }

@@ -12,6 +12,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
+import { MarkersProvider } from '../providers/markers/markers';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     NativeGeocoder,
+    MarkersProvider,
   ]
 })
 export class AppModule {}

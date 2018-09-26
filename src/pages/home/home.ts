@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, Slides, IonicPage, NavParams } from 'ionic-angular';
-import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import { EventDetail } from '../../models/event-detail/event-detail.interface';
 import { Observable } from 'rxjs';
 

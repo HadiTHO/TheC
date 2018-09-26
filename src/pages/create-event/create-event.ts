@@ -15,6 +15,7 @@ export class CreateEventPage {
   eventDetailRef$: AngularFireList<EventDetail>;
   eventID;
 
+  public volunteer: boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, private database: AngularFireDatabase) {
     this.eventDetailRef$ = this.database.list('event-list');
   }
@@ -24,15 +25,23 @@ export class CreateEventPage {
     this.eventDetailRef$.push({
       eventName: this.eventDetail.eventName,
       eventDesc: this.eventDetail.eventDesc,
-      lat: Number(this.eventDetail.lat),
-      lgt: Number(this.eventDetail.lgt),
-      eID: this.eventDetail.eventName + Math.random(),
+      address: this.eventDetail.address,
+      startDate: this.eventDetail.startDate,
+      endDate: this.eventDetail.endDate,
+      startTime: this.eventDetail.startTime,
+      endTime: this.eventDetail.endTime,
+      noV: this.eventDetail.noV,
+      
     });
 
     this.eventDetail = {} as EventDetail;
 
     this.navCtrl.push('HomePage'); 
 
+  }
+
+  toMap() {
+    this.navCtrl.push('map');
   }
 
 }

@@ -8,27 +8,49 @@
 
 
 <ion-content padding>
+
+    <ion-item>
+        <ion-label floating stack>Name</ion-label>
+        <ion-input type="text" [(ngModel)]="eventDetail.eventName"></ion-input>
+      </ion-item>
+        
+      <ion-item>
+        <ion-label floating>Description</ion-label>
+        <ion-input type="text" [(ngModel)]="eventDetail.eventDesc"></ion-input>
+      </ion-item>
   
-  <ion-item>
-    <ion-label floating>name</ion-label>
-    <ion-input type="text" [(ngModel)]="eventDetail.eventName"></ion-input>
-  </ion-item>
+      <ion-item>
+        <ion-label floating>Address</ion-label>
+        <ion-textarea [(ngModel)]="eventDetail.address"></ion-textarea>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label floating>Date Start</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" min="2018" max="2019" [(ngModel)]="eventDetail.startDate"></ion-datetime>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label floating>Date End</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" min="2018" max="2019" [(ngModel)]="eventDetail.endDate"></ion-datetime>
+      </ion-item>
 
-  <ion-item>
-    <ion-label floating>description</ion-label>
-    <ion-input type="text" [(ngModel)]="eventDetail.eventDesc"></ion-input>
-  </ion-item>
+      <ion-item>
+        <ion-label floating>Time Start</ion-label>
+        <ion-datetime displayFormat="hh:mm A" [(ngModel)]="eventDetail.startDate"></ion-datetime>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label floating>Time End</ion-label>
+        <ion-datetime displayFormat="hh:mm A" [(ngModel)]="eventDetail.endDate"></ion-datetime>
+      </ion-item>
 
-  <ion-label floating>location</ion-label>
-  <ion-item>
-    <ion-label>latitude</ion-label>
-    <ion-input type="number" [(ngModel)]="eventDetail.lat"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label>longitude</ion-label>
-    <ion-input type="number" [(ngModel)]="eventDetail.lgt"></ion-input>
-  </ion-item>
+      <ion-item>
+        <ion-label floating>Volunteer Needed?</ion-label>
+        <ion-toggle [(ngModel)]="volunteer"></ion-toggle>
+        <ion-input type="number" *ngIf="volunteer" [(ngModel)]="eventDetail.noV"></ion-input>
+      </ion-item>
+  
+      <button ion-button block clear (click)="toMap()"> got to map</button>
 
   <button ion-button block (click)="addEvent(eventDetail)">Post</button>
 
