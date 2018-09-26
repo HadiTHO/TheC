@@ -30,7 +30,6 @@ export class MapPage {
       maxZoom: 14
     }).addTo(this.map);
     // this.loadMarkers();
-
     this.map.locate({
       setView: true,
       maxZoom: 10
@@ -68,7 +67,7 @@ export class MapPage {
           handler: data => {
             
             this.geoCodeandAdd(data.city);
-            this.retrieveAddress(data.City);
+            // this.retrieveAddress(data.City);
           }
         }
       ]
@@ -87,30 +86,30 @@ export class MapPage {
       // this.map.addLayer(markerGroup);
       // })
 
-      this.markersProvider.saveMarker(coordinates[0]);
-      this.navCtrl.push('MarkerProvider', {eName: this.eName});
-    })
+      this.markersProvider.saveMarker(coordinates[0], this.eName);
+      })
+    
   .catch((error: any) => console.log(error));
   }
 
-  // loadMarkers() {
-  //   this.markersProvider.getAllMarkers().subscribe((markers: any) => {
-  //     markers.forEach(singlemarker => {
-  //       let markerGroup = leaflet.featureGroup();
+  loadMarkers() {
+    this.markersProvider.getAllMarkers().subscribe((markers: any) => {
+      markers.forEach(singlemarker => {
+        let markerGroup = leaflet.featureGroup();
  
-  //       let marker: any = leaflet
-  //         .marker([singlemarker.latitude, singlemarker.longitude])
-  //         .on("click", () => {
-  //           alert(singlemarker.message);
-  //         });
-  //       markerGroup.addLayer(marker);
-  //       this.map.addLayer(markerGroup);
-  //     });
-  //   });
-  // }
-
-  retrieveAddress(city) {
-    this.navCtrl.push('CreateEventPage', {address: city})
+        let marker: any = leaflet
+          .marker([singlemarker.latitude, singlemarker.longitude])
+          .on("click", () => {
+            alert(singlemarker.message);
+          });
+        markerGroup.addLayer(marker);
+        this.map.addLayer(markerGroup);
+      });
+    });
   }
+  
+  // retrieveAddress(city) {
+  //   this.navCtrl.push('CreateEventPage', {address: city})
+  // }
 
 }
