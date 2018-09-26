@@ -19,6 +19,8 @@
         <ion-input type="text" [(ngModel)]="eventDetail.eventDesc"></ion-input>
       </ion-item>
   
+      <button ion-button block clear (click)="toMap()">Add Address</button>
+
       <ion-item>
         <ion-label floating>Address</ion-label>
         <ion-textarea [(ngModel)]="eventDetail.address"></ion-textarea>

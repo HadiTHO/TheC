@@ -30,8 +30,6 @@
         <ion-item *ngFor="let new of (newEventList$ | async)?.slice().reverse()" navPush="EventPage" [navParams]="{new: new}">
           <h2>{{new.eventName}}</h2>
           <h4>{{new.eventDesc}}</h4>
-          <h6>{{new.lat}}</h6>
-          <h6>{{new.lgt}}</h6>
         </ion-item>
       </ion-list>
 

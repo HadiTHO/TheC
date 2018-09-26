@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { IonicPage, NavController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, AlertController, NavParams } from 'ionic-angular';
 import leaflet from 'leaflet';
 import { NativeGeocoder, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
 import { MarkersProvider } from "../../providers/markers/markers";
@@ -14,8 +14,9 @@ export class MapPage {
 
   @ViewChild('map') mapContainer: ElementRef;
   map: any;
-  constructor(public navCtrl: NavController, private alertCtrl: AlertController,private nativeGeocoder: NativeGeocoder, public markersProvier: MarkersProvider) {
- 
+  public eName: string;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController,private nativeGeocoder: NativeGeocoder, public markersProvider: MarkersProvider) {
+    this.eName = this.navParams.get('eName');
   }
  
   ionViewDidEnter() {
@@ -28,7 +29,7 @@ export class MapPage {
       attributions: 'Cavalry',
       maxZoom: 14
     }).addTo(this.map);
-    this.loadMarkers();
+    // this.loadMarkers();
 
     this.map.locate({
       setView: true,
@@ -67,6 +68,7 @@ export class MapPage {
           handler: data => {
             
             this.geoCodeandAdd(data.city);
+            this.retrieveAddress(data.City);
           }
         }
       ]
@@ -85,25 +87,30 @@ export class MapPage {
       // this.map.addLayer(markerGroup);
       // })
 
-      this.markersProvier.saveMarker(coordinates[0]);
+      this.markersProvider.saveMarker(coordinates[0]);
+      this.navCtrl.push('MarkerProvider', {eName: this.eName});
     })
   .catch((error: any) => console.log(error));
   }
 
-  loadMarkers() {
-    this.markersProvier.getAllMarkers().subscribe((markers: any) => {
-      markers.forEach(singlemarker => {
-        let markerGroup = leaflet.featureGroup();
+  // loadMarkers() {
+  //   this.markersProvider.getAllMarkers().subscribe((markers: any) => {
+  //     markers.forEach(singlemarker => {
+  //       let markerGroup = leaflet.featureGroup();
  
-        let marker: any = leaflet
-          .marker([singlemarker.latitude, singlemarker.longitude])
-          .on("click", () => {
-            alert(singlemarker.message);
-          });
-        markerGroup.addLayer(marker);
-        this.map.addLayer(markerGroup);
-      });
-    });
+  //       let marker: any = leaflet
+  //         .marker([singlemarker.latitude, singlemarker.longitude])
+  //         .on("click", () => {
+  //           alert(singlemarker.message);
+  //         });
+  //       markerGroup.addLayer(marker);
+  //       this.map.addLayer(markerGroup);
+  //     });
+  //   });
+  // }
+
+  retrieveAddress(city) {
+    this.navCtrl.push('CreateEventPage', {address: city})
   }
 
 }

@@ -41,7 +41,10 @@ export class CreateEventPage {
   }
 
   toMap() {
-    this.navCtrl.push('map');
+    this.navCtrl.push('map', {eName: this.eventDetail.eventName});
   }
 
+  ionViewWillLoad() {
+    this.eventDetail.address = this.navParams.get('address');
+  }
 }
