@@ -26,6 +26,11 @@ export class CreateEventPage {
   }
 
   addEvent(eventDetail: EventDetail) {
+
+    if(this.volunteer == false) {
+      this.eventDetail.noV = 0;
+    }
+
     this.imageName = eventDetail.eventName;
     this.upload();
     this.eventDetailRef$.push({
@@ -43,7 +48,7 @@ export class CreateEventPage {
 
     this.eventDetail = {} as EventDetail;
 
-    this.navCtrl.setRoot('HomePage'); 
+    this.navCtrl.push('HomePage')
 
   }
 

@@ -26,13 +26,32 @@
 
     <ion-slide>
       <ion-list>
-        <ion-item *ngFor="let new of (newEventList$ | async)?.slice().reverse()" navPush="EventPage" [navParams]="{new: new}">
+
+        <ion-card *ngFor="let new of (newEventList$ | async)?.slice().reverse()" navPush="EventPage" [navParams]="{new: new}">
+
+          <ion-item>
             <ion-avatar item-start>
-                <img src="https://firebasestorage.googleapis.com/v0/b/cavalry-fyp-18s1-1.appspot.com/o/images%2F{{ new.image }}.jpg?alt=media&amp;token=803a91d8-51c6-40b2-a997-0ce97914bc61">
-              </ion-avatar>
-          <h2>{{new.eventName}}</h2>
-          <h4>{{new.eventDesc}}</h4>
-        </ion-item>
+              <img src="https://firebasestorage.googleapis.com/v0/b/cavalry-fyp-18s1-1.appspot.com/o/images%2F{{ new.image }}.jpg?alt=media&amp;token=803a91d8-51c6-40b2-a997-0ce97914bc61">
+            </ion-avatar>
+            <h4>{{new.eventName}}</h4>
+          </ion-item>
+          
+          <ion-card-content>
+            <h4>{{new.eventDesc}}</h4>
+          </ion-card-content>
+          
+          <ion-row>
+
+            <ion-col>
+              <button ion-button round>Joid Event</button>
+            </ion-col>
+
+            <ion-col>
+              <button ion-button round>Volunteer</button>
+            </ion-col>
+
+          </ion-row>
+        </ion-card>
       </ion-list>
     </ion-slide> 
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+// import { GoogleLoginComponent } from '../../components/google-login/google-login';
 
 
 @IonicPage()

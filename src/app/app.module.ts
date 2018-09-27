@@ -14,6 +14,9 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { MarkersProvider } from '../providers/markers/markers';
 import { Camera } from '@ionic-native/camera';
+import { IonicImageViewerModule } from 'ionic-img-viewer';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { GooglePlus } from '@ionic-native/google-plus'
 
 @NgModule({
   declarations: [
@@ -26,6 +29,8 @@ import { Camera } from '@ionic-native/camera';
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
+    IonicImageViewerModule,
+    AngularFireAuthModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -39,6 +44,7 @@ import { Camera } from '@ionic-native/camera';
     NativeGeocoder,
     MarkersProvider,
     Camera,
+    GooglePlus,
   ]
 })
 export class AppModule {}
