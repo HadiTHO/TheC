@@ -10,5 +10,6 @@ export interface EventDetail {
     image?: string;
     noV?: number;
     join?: number;
+    userID?: string;
 
 }

@@ -43,6 +43,7 @@ export class CreateEventPage {
       endTime: this.eventDetail.endTime,
       noV: this.eventDetail.noV,
       image: this.imageName,
+      // userID: 
       
     });
 
