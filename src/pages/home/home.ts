@@ -3,6 +3,7 @@ import { NavController, Slides, IonicPage, NavParams } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import { EventDetail } from '../../models/event-detail/event-detail.interface';
 import { Observable } from 'rxjs';
+import { storage } from 'firebase';
 
 @IonicPage()
 @Component({
@@ -18,7 +19,8 @@ export class HomePage {
 
   newEventListRef$ : AngularFireList<EventDetail>;
   newEventList$: Observable<EventDetail[]>;
-  
+  imageSource;
+  eventPhoto;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams, 
@@ -36,6 +38,13 @@ export class HomePage {
     this.newEventList$ = this.newEventListRef$.valueChanges();
     
   }
+
+  getPhotoURL(image){
+    storage().ref().child('images/'+ image+'.jpg').getDownloadURL().then((url)=>{
+    this.eventPhoto = url;
+ 
+   })
+ }
   
   ionViewDidEnter() {
     this.SwipedTabsIndicator = document.getElementById("indicator");

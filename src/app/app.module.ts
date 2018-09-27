@@ -13,6 +13,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { MarkersProvider } from '../providers/markers/markers';
+import { Camera } from '@ionic-native/camera';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { MarkersProvider } from '../providers/markers/markers';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     NativeGeocoder,
     MarkersProvider,
+    Camera,
   ]
 })
 export class AppModule {}

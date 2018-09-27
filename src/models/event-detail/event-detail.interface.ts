@@ -7,6 +7,7 @@ export interface EventDetail {
     endDate: string;
     startTime: string;
     endTime: string;
+    image?: string;
     noV?: number;
     join?: number;
 

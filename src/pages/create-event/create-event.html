@@ -8,6 +8,10 @@
 
 
 <ion-content padding>
+  
+    <div tex-align="center">
+        <img src="{{currentImage}}"/>
+    </div>
 
     <ion-item>
         <ion-label floating stack>Name</ion-label>
@@ -38,21 +42,21 @@
 
       <ion-item>
         <ion-label floating>Time Start</ion-label>
-        <ion-datetime displayFormat="hh:mm A" [(ngModel)]="eventDetail.startDate"></ion-datetime>
+        <ion-datetime displayFormat="hh:mm A" [(ngModel)]="eventDetail.startTime"></ion-datetime>
       </ion-item>
     
       <ion-item>
         <ion-label floating>Time End</ion-label>
-        <ion-datetime displayFormat="hh:mm A" [(ngModel)]="eventDetail.endDate"></ion-datetime>
+        <ion-datetime displayFormat="hh:mm A" [(ngModel)]="eventDetail.endTime"></ion-datetime>
       </ion-item>
 
       <ion-item>
-        <ion-label floating>Volunteer Needed?</ion-label>
+        <ion-label >Volunteer Needed?</ion-label>
         <ion-toggle [(ngModel)]="volunteer"></ion-toggle>
         <ion-input type="number" *ngIf="volunteer" [(ngModel)]="eventDetail.noV"></ion-input>
       </ion-item>
   
-      <button ion-button block clear (click)="toMap()"> got to map</button>
+      <button ion-button  block (click)="takePhoto()">take pic</button>
 
   <button ion-button block (click)="addEvent(eventDetail)">Post</button>
 
