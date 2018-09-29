@@ -14,7 +14,7 @@ import { Platform } from 'ionic-angular';
 export class GoogleLoginComponent {
 
   user: Observable<firebase.User>;
-
+  error;
   constructor(private afAuth: AngularFireAuth, 
     private gplus: GooglePlus,
     private platform: Platform) {
@@ -27,16 +27,17 @@ export class GoogleLoginComponent {
     try {
   
       const gplusUser = await this.gplus.login({
-        'webClientId': 'AIzaSyBPYk0crREBNIr3qbrNL1QeDUI0EbEc3yo.apps.googleusercontent.com',
+        'webClientId': 'AIzaSyBFukXUDTME2aiq9L53QYoj4mJ-EbKblTM.apps.googleusercontent.com',
         'offline': true,
         'scopes': 'profile email'
+        
       })
   
       return await this.afAuth.auth.signInWithCredential(
         firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken))
   
     } catch(err) {
-      console.log(err)
+      this.error = err
     }
   }
 

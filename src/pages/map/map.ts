@@ -66,7 +66,7 @@ export class MapPage {
           text: 'Save',
           handler: data => {
             
-            this.geoCodeandAdd(data.city);
+            this.geoCodeandAdd(data.address);
             // this.retrieveAddress(data.City);
           }
         }
@@ -75,8 +75,8 @@ export class MapPage {
     prompt.present();
   }
  
-  geoCodeandAdd(city) {
-    this.nativeGeocoder.forwardGeocode(city)
+  geoCodeandAdd(address) {
+    this.nativeGeocoder.forwardGeocode(address)
       .then((coordinates: NativeGeocoderForwardResult[]) => {
       //   let markerGroup = leaflet.featureGroup();
       //   let marker: any = leaflet.marker([parseFloat(coordinates[0].latitude), parseFloat(coordinates[0].longitude)]).on('click', () => {

@@ -1,10 +1,11 @@
 export const FIREBASE_CONFIG = { 
     
-    apiKey: "AIzaSyDQ12sulYqa1pwMKOoKnjN9PfwSsqrC_q0",
-    authDomain: "cavalry-fyp-18s1-1.firebaseapp.com",
-    databaseURL: "https://cavalry-fyp-18s1-1.firebaseio.com",
-    projectId: "cavalry-fyp-18s1-1",
-    storageBucket: "cavalry-fyp-18s1-1.appspot.com",
-    messagingSenderId: "976290856652"
+    apiKey: "AIzaSyAo6uug7sVe0dn4W_QsbrcBodjETMbD4T8",
+    authDomain: "cavalry-181.firebaseapp.com",
+    databaseURL: "https://cavalry-181.firebaseio.com",
+    projectId: "cavalry-181",
+    storageBucket: "cavalry-181.appspot.com",
+    messagingSenderId: "120234203445"
   
 };
+
