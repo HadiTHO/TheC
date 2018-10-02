@@ -9,7 +9,7 @@ import { EventDetail } from '../../models/event-detail/event-detail.interface';
 })
 export class EventPage {
 
-  new: EventDetail;
+  event: EventDetail;
 
   constructor(
     public navCtrl: NavController,
@@ -18,7 +18,7 @@ export class EventPage {
   }
 
   ionViewWillLoad() {
-    this.new = this.navParams.get('new');
+    this.event = this.navParams.get('event');
   }
 
 }

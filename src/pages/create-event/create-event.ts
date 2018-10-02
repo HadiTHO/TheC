@@ -13,8 +13,9 @@ import { storage } from 'firebase';
 })
 export class CreateEventPage {
 
-  eventDetail = {} as EventDetail;
+ 
   eventDetailRef$: AngularFireList<EventDetail>;
+  eventDetail = {} as EventDetail;
   selectedPhoto;
   loading;
   currentImage;
@@ -33,6 +34,7 @@ export class CreateEventPage {
 
     this.imageName = eventDetail.eventName;
     this.upload();
+
     this.eventDetailRef$.push({
       eventName: this.eventDetail.eventName,
       eventDesc: this.eventDetail.eventDesc,
@@ -42,6 +44,7 @@ export class CreateEventPage {
       startTime: this.eventDetail.startTime,
       endTime: this.eventDetail.endTime,
       noV: this.eventDetail.noV,
+      join: 1,
       image: this.imageName,
       // userID: 
       
@@ -79,9 +82,9 @@ export class CreateEventPage {
 
     const options : CameraOptions = {
     
-      quality:100,
-      targetHeight:200,
-      targetWidth:200,
+      quality:500,
+      targetHeight:500,
+      targetWidth:500,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType:this.camera.MediaType.PICTURE,

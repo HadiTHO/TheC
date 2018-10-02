@@ -86,7 +86,6 @@
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1" />
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
     <allow-navigation href="http://192.168.100.9:8100" sessionid="9a3dc3b8" />
-    <allow-navigation href="http://192.168.100.5:8100" sessionid="21ca01ab" />
     <engine name="browser" spec="5.0.4" />
     <engine name="android" spec="^7.1.1" />
 </widget>

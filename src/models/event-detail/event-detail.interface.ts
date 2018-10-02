@@ -9,7 +9,7 @@ export interface EventDetail {
     endTime: string;
     image?: string;
     noV?: number;
-    join?: number;
+    join: number;
     userID?: string;
 
 }

@@ -98,7 +98,7 @@ export class MapPage {
         let markerGroup = leaflet.featureGroup();
  
         let marker: any = leaflet
-          .marker([parseFloat(singlemarker.latitude), parseFloat(singlemarker.longitude)])
+          .marker([singlemarker.latitude, singlemarker.longitude])
           .on("click", () => {
             alert(singlemarker.message);
           });

@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, Slides, IonicPage, NavParams } from 'ionic-angular';
-import { AngularFireDatabase, AngularFireList} from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject} from 'angularfire2/database';
 import { EventDetail } from '../../models/event-detail/event-detail.interface';
 import { Observable } from 'rxjs';
 import { storage } from 'firebase';
@@ -17,10 +17,13 @@ export class HomePage {
   SwipedTabsIndicator :any= null;
   tabs:any=[];
 
-  newEventListRef$ : AngularFireList<EventDetail>;
-  newEventList$: Observable<EventDetail[]>;
+  eventListRef$: AngularFireList<EventDetail>;
+  // updateEventRef$: AngularFireObject<EventDetail>;
+  eventList$: Observable<EventDetail[]>;
+  updateEvent = {} as EventDetail;
   imageSource;
   eventPhoto;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams, 
@@ -34,8 +37,13 @@ export class HomePage {
    console.log("Error while retrieving event details : ", err);
     }); 
 
-    this.newEventListRef$ = this.database.list<EventDetail>('event-list');
-    this.newEventList$ = this.newEventListRef$.valueChanges();
+    // this.newEventListRef$ = this.database.list('event-list');
+
+    // const updateEventid = this.navParams.get('updateEventid')
+    
+    this.eventListRef$ = this.database.list<EventDetail>('event-list');
+    // this.updateEventRef$ = this.database.object('event-list');
+    this.eventList$ = this.eventListRef$.valueChanges();
     
   }
 
@@ -69,13 +77,30 @@ export class HomePage {
    	    this.SwipedTabsIndicator.style.webkitTransform = 'translate3d(' + (($event.progress* (this.SwipedTabsSlider.length()-1))*100) + '%,0,0)';
   }
 
-  toEvent(EventDetail: EventDetail) {
-    this.navCtrl.push('EventPage', 
-      { eventID: EventDetail.$key })
-  }
+  // toEvent(eventDetail: EventDetail) {
+  //   this.navCtrl.push('EventPage', 
+  //     { eventID: eventDetail.$key })
+  // }
 
   toMap() {
     this.navCtrl.push('MapPage');
+  }
+
+joinAdd(updateEvent: EventDetail,) {
+    this.updateEvent.$key = this.updateEvent.$key,
+    this.updateEvent.eventName = this.updateEvent.eventName,
+    this.updateEvent.eventDesc = this.updateEvent.eventDesc,
+    this.updateEvent.address = this.updateEvent.address,
+    this.updateEvent.startDate = this.updateEvent.startDate,
+    this.updateEvent.endDate = this.updateEvent.endDate,
+    this.updateEvent.startTime = this.updateEvent.startTime,
+    this.updateEvent.endTime = this.updateEvent.endTime,
+    this.updateEvent.noV = this.updateEvent.noV,
+    this.updateEvent.image = this.updateEvent.image,
+    this.updateEvent.join = this.updateEvent.join++;
+    
+    this.eventListRef$.update(this.updateEvent.$key, updateEvent);
+
   }
 
 }
